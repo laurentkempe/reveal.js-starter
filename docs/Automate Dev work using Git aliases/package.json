@@ -1,0 +1,22 @@
+{
+  "title": "Reveal.js Starter",
+  "license": "MIT",
+  "author": "hschne",
+  "dependencies": {
+    "reveal.js": "*"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.26.3",
+    "gulp": "^4.0.0",
+    "gulp-clean-css": "3.9.4",
+    "gulp-filter": "5.1.0",
+    "gulp-header": "2.0.5",
+    "gulp-rename": "1.3.0",
+    "gulp-sass": "4.0.1",
+    "gulp-uglify": "3.0.0"
+  },
+  "scripts": {
+    "serve": "gulp dev",
+    "build": "gulp"
+  }
+}
