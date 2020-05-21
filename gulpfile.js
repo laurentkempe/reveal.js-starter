@@ -8,8 +8,8 @@ var browserSync = require('browser-sync').create();
 gulp.task(
   'vendor',
   gulp.series(done => {
-    gulp.src(['./node_modules/reveal.js/css/**/*']).pipe(gulp.dest('./css'));
-    gulp.src(['./node_modules/reveal.js/js/**/*']).pipe(gulp.dest('./js'));
+    gulp.src(['./node_modules/reveal.js/dist/**/*.css']).pipe(gulp.dest('./css'));
+    gulp.src(['./node_modules/reveal.js/dist/**/*.js']).pipe(gulp.dest('./js'));
     gulp.src(['./node_modules/reveal.js/plugin/**/*']).pipe(gulp.dest('./plugin'));
     gulp.src(['./node_modules/reveal.js/lib/**/*']).pipe(gulp.dest('./lib'));
     done();
@@ -55,7 +55,7 @@ gulp.task(
   'js:minify',
   gulp.series(() => {
     return gulp
-      .src(['./js/*.js', '!./js/*.min.js'])
+      .src(['./dist/*.js', '!./dist/*.min.js'])
       .pipe(uglify())
       .pipe(
         rename({
@@ -69,14 +69,14 @@ gulp.task(
 
 gulp.task('js', gulp.series('js:minify'));
 
-gulp.task('serve', function() {
+gulp.task('serve', function () {
   browserSync.init({
     server: {
       baseDir: './',
     },
   });
   gulp.watch('./scss/**/*.scss', gulp.series('css'));
-  gulp.watch(['./js/*.js', '!./js/reveal*.js'], gulp.series('js'));
+  gulp.watch(['./dist/*.js', '!./dist/reveal*.js'], gulp.series('js'));
   gulp.watch('*.html').on('change', browserSync.reload);
   gulp.watch('*.md').on('change', browserSync.reload);
 });
